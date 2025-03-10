@@ -3,18 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
   <link href="./output.css" rel="stylesheet">
+
 </head>
-<body>
-    <div class="wrapper">
-        <nav></nav>
-        <div class="inner">
-            <div class="left"></div>
-            <div class="center"></div>
-            <div class="right"></div>
+<body class=" text-white bg-black">
+    <div class="wrapper h-[100vh] w-[100vw]">
+        <nav class="h-16  flex items-center justify-between  w-full">
+            <div class="left flex items-center px-2 h-full gap-4 w-[50%] ">
+             <img src="https://cdn2.iconfinder.com/data/icons/leto-most-searched-mix-3/64/__menu_more-27-1024.png" class="h-10 " alt="">
+                <i class="ri-arrow-left-wide-line  text-4xl"></i>
+                <i class="ri-arrow-right-wide-line text-gray-700 text-4xl"></i>
+                <i class="ri-home-4-line text-3xl bg-gray-700 p-2 rounded-full" ></i>
+                <div class="search items-center justify-between px-2 h-[80%] bg-gray-700 flex w-96 rounded-full">
+                    <i class="ri-search-line text-3xl "></i>
+                    <input type="text" class="w-[70%] bg-gray-700  text-xl" placeholder="What do you want to play?">
+                    <p class="h-[80%] border "></p>
+                    <i class="ri-hard-drive-3-line text-3xl"></i>
+    
+                </div>
+                
+            </div>
+            <div class="right flex items-center justify-between w-[25%] px-3 h-[90%]  ">
+                <p class="bg-white p-2 text-black px-5 rounded-full font-medium">Explore Premium</p>
+                <i class="ri-notification-4-line text-3xl"></i>
+                <i class="ri-group-3-line text-3xl"></i>
+                <div class="circle h-12 rounded-full border-[5px] w-12 bg-red-500 "></div>
+
+            </div>
+       
+        </nav>
+        <div class="inner h-[77%] w-full bg-black items-center  flex">
+            <div class="left   h-[98%] bg-gray-800 w-[26%] rounded-lg m-1 mt-1  "></div>
+            <div class="center h-[98%] bg-gray-800 w-[50%] rounded-lg m-1 mt-1 "></div>
+            <div class="right  h-[98%] bg-gray-800 w-[22%] rounded-lg m-1 mt-1 ">
+                <div class="info w-full p-2   flex items-center justify-between "><h2 class="underline font-semibold">Liked Songs</h2> <div class="right flex gap-4 text-xl"><i class="ri-more-fill"></i><i class="ri-close-line"></i> </div> </div>
+                <div class="picture"></div>
+                <div class="info-2"></div>
+                <div class="about"></div>
+            </div>
 
         </div>
-        <div class="play-bar"></div>
+        <div class="play-bar w-full h-[14%] flex   ">
+            <div class="left  flex items-center  gap-3  h-full  w-[28%]">
+                <div class="img h-24 w-24 bg-red-500 rounded-md">
+
+                </div>
+                <div class="content">
+                    <p class="font-semibold ">Brown Rang</p>
+                    <p class="text-gray-300">Yo Yo Honey Singh</p>
+                </div>
+            
+                <i class="ri-add-circle-line w-10 h-10  text-xl flex items-center justify-center rounded-full"></i>
+            </div>
+            <div class="center h-full  w-[45%] ">
+                <div class="fxn flex items-center justify-center h-[70%] ">
+                    <i class="ri-shuffle-fill       text-2xl  "></i>
+                    <i class="ri-skip-left-fill     text-4xl  "></i>
+                    <i class="ri-pause-circle-fill  text-5xl"></i>
+                    <i class="ri-skip-right-fill    text-4xl  "></i>
+                    <i class="ri-repeat-2-fill      text-2xl  "></i>
+                </div>
+                <div class="seek flex items-center justify-center gap-2 ">
+                    <p>
+                        0:00
+
+                    </p>
+                    <input type="range" name="seek" id="seek" class="w-[80%] ">
+                    <p>0:00</p>
+                </div>
+            </div>
+            <div class="right  flex items-center justify-center h-full gap-2  w-[27%]">
+                <i class="ri-play-mini-fill     border-[3px] border-green-400 rounded-sm    text-green-400   text-sm "></i>
+                <i class="ri-mic-line                ml-0.5 text-xl "></i>
+                <i class="ri-flip-vertical-line      ml-0.5 text-xl "></i>
+                <i class="ri-speaker-fill            ml-0.5 text-xl "></i>
+                <i class="ri-volume-down-fill        ml-0.5 text-xl "></i>
+                <input class="bg-white" type="range" name="volume id="volume-rocker">
+                <i class="ri-picture-in-picture-fill ml-0.5 text-xl  "></i>
+                <i class="ri-expand-diagonal-line    ml-0.5 text-xl  "></i>
+            </div>
+        </div>
     </div>
 </body>
 </html>
