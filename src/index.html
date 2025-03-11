@@ -36,9 +36,60 @@
             </div>
        
         </nav>
-        <div class="inner h-[77%] w-full bg-black items-center  flex">
-            <div class="left   h-[98%] bg-gray-800 w-[26%] rounded-lg m-1 mt-1  "></div>
-            <div class="center h-[98%] bg-gray-800 w-[50%] rounded-lg m-1 mt-1 "></div>
+        <div class="inner h-[77%] w-full bg-black items-center relative  flex">
+            <div class="more hidden h-44 w-36 rounded-lg bg-gray-900 top-0 left-3 absolute">
+              <div class="inner-more p-1 flex items-center text-md  justify-between px-4"><p>File</p><p> ></p></div>
+              <div class="inner-more p-1 flex items-center text-md  justify-between px-4"><p>Edit</p><p> ></p></div>
+              <div class="inner-more p-1 flex items-center text-md  justify-between px-4"><p>View</p><p> ></p></div>
+              <div class="inner-more p-1 flex items-center text-md  justify-between px-4"><p>Playback</p><p> ></p></div>
+              <div class="inner-more p-1 flex items-center text-md  justify-between px-4"><p>Help</p><p> ></p></div>
+
+            </div>
+            <div class="more-account hidden h-60 px-1 w-60 rounded-lg bg-gray-900 top-0 right-5 absolute">
+                <div class="inner-more p-1 flex items-center text-md text-xl  justify-between px-4"><p>Account</p> <i class="ri-external-link-fill"></i></div>
+                <div class="inner-more p-1 flex items-center text-md text-xl  justify-between px-4"><p>Profile</p></div>
+                <div class="inner-more p-1 flex items-center text-md text-xl  justify-between px-4"><p>Upgrade to Premium</p></div>
+                <div class="inner-more p-1 flex items-center text-md text-xl  justify-between px-4"><p>Private session</p></div>
+                <div class="inner-more p-1 flex items-center text-md text-xl  justify-between px-4"><p>Setting</p></div>
+                <div class="inner-more p-1 flex items-center text-md text-xl  mt-2 px-4  justify-between  border-t border-gray-500"><p>Log out</p></div>
+
+  
+              </div>
+            <div class="left   h-[98%] bg-gray-800 w-[26%] rounded-lg m-1 mt-1  ">
+                 <div class="inner-left-nav px-4 w-full justify-center items-center  flex h-14">
+                    <p class="h-full flex gap-3 items-center justify-start w-[70%] ">
+                        <i class="ri-fridge-fill text-3xl"></i>
+                        <span class="w-[60%]  text-xl">Your Library</span>
+                    </p>
+                    <p class="h-full w-[30%] flex items-center justify-center gap-3 text-xl ">
+                        <i class="ri-add-line"></i>
+                        <i class="ri-arrow-right-line"></i>
+                    </p>
+                 </div>
+                 <div class="inner-left-nav2 w-full h-14   items-center justify-start flex">
+                   
+                    <p class="text-md p-2 bg-gray-700 px-5 ml-2 text-white rounded-full">Playlist</p>
+                    <p class="text-md p-2 bg-gray-700 px-5 ml-2 text-white rounded-full">Album</p>
+                    <p class="text-md p-2 bg-gray-700 px-5 ml-2 text-white rounded-full">Artists</p>
+                 </div>
+                 <div class="inner-left-nav3 w-full h-14   items-center justify-between px-3 flex">
+                   
+                    <i class="ri-search-line text-xl"></i>
+                    <p>
+                        <span class="text-md">Recents</span>
+                        <i class="ri-list-check text-xl"></i>
+                    </p>
+                  
+                 </div>
+            </div>
+            <div class="center h-[98%] bg-gray-800 w-[50%] rounded-lg m-1 mt-1 ">
+                <div class="upper flex items-start mt-3">
+
+                    <p class="text-md p-2 bg-white px-5 ml-2 text-black rounded-full">All</p>
+                    <p class="text-md p-2 bg-gray-700 px-5 ml-2 text-white rounded-full">Music</p>
+                    <p class="text-md p-2 bg-gray-700 px-5 ml-2 text-white rounded-full">Podcats</p>
+                </div>
+            </div>
             <div class="right  h-[98%] bg-gray-800 w-[22%] rounded-lg m-1 mt-1 ">
                 <div class="info w-full p-2   flex items-center justify-between "><h2 class="underline font-semibold">Liked Songs</h2> <div class="right flex gap-4 text-xl"><i class="ri-more-fill"></i><i class="ri-close-line"></i> </div> </div>
                 <div class="picture"></div>
