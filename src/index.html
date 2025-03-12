@@ -14,7 +14,7 @@
     <div class="wrapper h-[100vh] w-[100vw]">
         <nav class="h-16  flex items-center justify-between  w-full">
             <div class="left flex items-center px-2 h-full gap-4 w-[50%] ">
-             <img src="https://cdn2.iconfinder.com/data/icons/leto-most-searched-mix-3/64/__menu_more-27-1024.png" class="h-10 " alt="">
+             <img  id="left-more" src="https://cdn2.iconfinder.com/data/icons/leto-most-searched-mix-3/64/__menu_more-27-1024.png" class="h-10 " alt="">
                 <i class="ri-arrow-left-wide-line  text-4xl"></i>
                 <i class="ri-arrow-right-wide-line text-gray-700 text-4xl"></i>
                 <i class="ri-home-4-line text-3xl bg-gray-700 p-2 rounded-full" ></i>
@@ -31,13 +31,13 @@
                 <p class="bg-white p-2 text-black px-5 rounded-full font-medium">Explore Premium</p>
                 <i class="ri-notification-4-line text-3xl"></i>
                 <i class="ri-group-3-line text-3xl"></i>
-                <div class="circle h-12 rounded-full border-[5px] w-12 bg-red-500 "></div>
+                <div id="account" class="circle h-12 rounded-full border-[5px] w-12 bg-red-500 "></div>
 
             </div>
        
         </nav>
         <div class="inner h-[77%] w-full bg-black items-center relative  flex">
-            <div class="more hidden h-44 w-36 rounded-lg bg-gray-900 top-0 left-3 absolute">
+            <div class="more-options hidden h-44 w-36 rounded-lg bg-gray-900 top-0 left-3 absolute">
               <div class="inner-more p-1 flex items-center text-md  justify-between px-4"><p>File</p><p> ></p></div>
               <div class="inner-more p-1 flex items-center text-md  justify-between px-4"><p>Edit</p><p> ></p></div>
               <div class="inner-more p-1 flex items-center text-md  justify-between px-4"><p>View</p><p> ></p></div>
@@ -90,6 +90,15 @@
                     <p class="text-md p-2 bg-gray-700 px-5 ml-2 text-white rounded-full">Music</p>
                     <p class="text-md p-2 bg-gray-700 px-5 ml-2 text-white rounded-full">Podcats</p>
                 </div>
+                <div class="main-content h-[33%] w-full grid grid-cols-2 grid-rows-2   ">
+<div class="box h-12 rounded-md bg-gray-700 m-3 w-[90%] flex items-center justify-start gap-4"> <div class="img h-full rounded-md bg-red-700 w-14"></div> <p>liked songs</p> </div>
+<div class="box h-12 rounded-md bg-gray-700 m-3 w-[90%] flex items-center justify-start gap-4"> <div class="img h-full rounded-md bg-red-700 w-14"></div> <p>liked songs</p> </div>
+<div class="box h-12 rounded-md bg-gray-700 m-3 w-[90%] flex items-center justify-start gap-4"> <div class="img h-full rounded-md bg-red-700 w-14"></div> <p>liked songs</p> </div>
+<div class="box h-12 rounded-md bg-gray-700 m-3 w-[90%] flex items-center justify-start gap-4"> <div class="img h-full rounded-md bg-red-700 w-14"></div> <p>liked songs</p> </div>
+<div class="box h-12 rounded-md bg-gray-700 m-3 w-[90%] flex items-center justify-start gap-4"> <div class="img h-full rounded-md bg-red-700 w-14"></div> <p>liked songs</p> </div>
+<div class="box h-12 rounded-md bg-gray-700 m-3 w-[90%] flex items-center justify-start gap-4"> <div class="img h-full rounded-md bg-red-700 w-14"></div> <p>liked songs</p> </div>
+
+                </div>
             </div>
             <div class="right  h-[98%] bg-gray-800 w-[22%] rounded-lg m-1 mt-1 ">
                 <div class="info w-full p-2   flex items-center justify-between "><h2 class="underline font-semibold">Liked Songs</h2> <div class="right flex gap-4 text-xl"><i class="ri-more-fill"></i><i class="ri-close-line"></i> </div> </div>
@@ -140,5 +149,6 @@
             </div>
         </div>
     </div>
+    <script src="./script.js"></script>
 </body>
 </html>
