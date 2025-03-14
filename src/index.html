@@ -104,16 +104,8 @@
 
         </div>
         <div class="play-bar w-full h-[14%] flex   ">
-            <div class="left  flex items-center  gap-3  h-full  w-[28%]">
-                <div class="img h-24 w-24 bg-red-500 rounded-md">
-
-                </div>
-                <div class="content">
-                    <p class="font-semibold ">Brown Rang</p>
-                    <p class="text-gray-300">Yo Yo Honey Singh</p>
-                </div>
+            <div class="left-playback  flex items-center  gap-3  h-full  w-[28%]">
             
-                <i class="ri-add-circle-line w-10 h-10  text-xl flex items-center justify-center rounded-full"></i>
             </div>
             <div class="center h-full  w-[45%] ">
                 <div class="fxn flex items-center justify-center h-[70%] ">
@@ -128,7 +120,7 @@
                         0:00
 
                     </p>
-                    <input type="range" name="seek" id="seek" class="w-[80%] ">
+                    <input type="range" name="seek"  step="1" value="0" id="seek" class="w-[80%] ">
                     <p>0:00</p>
                 </div>
             </div>
@@ -138,12 +130,13 @@
                 <i class="ri-flip-vertical-line      ml-0.5 text-xl "></i>
                 <i class="ri-speaker-fill            ml-0.5 text-xl "></i>
                 <i class="ri-volume-down-fill        ml-0.5 text-xl "></i>
-                <input class="bg-white" type="range" name="volume id="volume-rocker">
+                <input class="bg-white" type="range" name="volume"   min="0" max="1" step="0.01" value="1" id="volume-rocker">
                 <i class="ri-picture-in-picture-fill ml-0.5 text-xl  "></i>
                 <i class="ri-expand-diagonal-line    ml-0.5 text-xl  "></i>
             </div>
         </div>
     </div>
+    <audio id="aaa"  src="./songs/Rehan-Deyan.mp3"></audio>
     <script src="./script.js"></script>
 </body>
 </html>
