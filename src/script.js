@@ -134,8 +134,8 @@ function playbackSongs(id) {
                     <p class="font-semibold ">${songname}</p>
                     <p class="text-gray-300">${artistName}</p>
                 </div>
-            
-                <i class="ri-add-circle-line w-10 h-10  text-xl flex items-center justify-center rounded-full"></i>`
+            <i class="ri-checkbox-circle-fill  hidden"></i>
+                <i class="ri-add-circle-line transform transition-all duration-300 text-gray-300 hover:text-white  hover:scale-105 w-10 h-10  text-xl flex items-center justify-center rounded-full"></i>`
 
 
     leftplayback.innerHTML = clutter
@@ -204,3 +204,16 @@ platBtn.addEventListener('click',()=>{
     pauseBtn.style.display="block"
     
     })
+
+    // liked songs
+    likesongs()
+function likesongs(){
+
+    leftplayback.addEventListener('click',(e)=>{
+
+        if(e.target.tagName==="I"){
+            
+            
+        }
+    })
+}
