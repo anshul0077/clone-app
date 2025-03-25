@@ -135,7 +135,7 @@ function playbackSongs(id) {
                     <p class="text-gray-300">${artistName}</p>
                 </div>
             <i class="ri-checkbox-circle-fill  hidden"></i>
-                <i class="ri-add-circle-line transform transition-all duration-300 text-gray-300 hover:text-white  hover:scale-105 w-10 h-10  text-xl flex items-center justify-center rounded-full"></i>`
+                <i data-set=${id} class="ri-add-circle-line transform transition-all duration-300 text-gray-300 hover:text-white  hover:scale-105 w-10 h-10  text-xl flex items-center justify-center rounded-full"></i>`
 
 
     leftplayback.innerHTML = clutter
@@ -156,6 +156,7 @@ volumeRocker.addEventListener('input', () => {
 function seekupdater() {
   let seek = document.querySelector("#seek");
  clearInterval(seekTime)
+
 
  seekTime = setInterval(() => {
  
@@ -207,13 +208,33 @@ platBtn.addEventListener('click',()=>{
 
     // liked songs
     likesongs()
+    let arr=[];
 function likesongs(){
 
     leftplayback.addEventListener('click',(e)=>{
 
         if(e.target.tagName==="I"){
             
-            
+           arr.push(music[ e.target.getAttribute("data-set")])            
         }
+        console.log(arr);
     })
 }
+
+seek.addEventListener("input",(e)=>{
+
+//   currentAudio.currentTime+=seek.value
+console.log(currentAudio.currentTime);
+console.log(currentAudio.duration);
+console.log(seek.value);
+console.log();
+currentAudio.currentTime=((currentAudio.duration* seek.value)/100)
+
+
+
+
+  
+  seekupdater()
+  
+})
+
