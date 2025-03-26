@@ -5,17 +5,20 @@ let AccountOptions = document.querySelector(".more-account")
 let songDiv = document.querySelector(".main-content")
 let endTime = document.querySelector("#end-time")
 let initalTime = document.querySelector("#inital-time")
+let leftLiked = document.querySelector(".left >.box")
+let likedSongsDiv=document.querySelector(".liked-songs-here")
+let likedDIv=document.querySelector(".inner-main-content ")
 let audioduration = 0;
-let platBtn= document.querySelector("#play")
-let pauseBtn= document.querySelector("#pause")
+let platBtn = document.querySelector("#play")
+let pauseBtn = document.querySelector("#pause")
 let seekTime
 let playtime = 0;
 let count = 0;
 let music = [
-    { id: 0, name: "Rehan Deyan", src: "./songs/Rehan-Deyan.mp3", img: "./songs/Rehan-deyan.jpg", artist: 'Navaan sandhu' },
-    { id: 1, name: "Majhail Anthem", src: "./songs/Majhail.mp3", img: "./songs/Majh.jpg", artist: 'Karan Randhawa' },
-    { id: 2, name: "Jhol", src: "./songs/Jhol.mp3", img: "./songs/Jhol.jpg", artist: 'Mannu, Annural Khalid' },
-    { id: 3, name: "Rukh", src: "./songs/Rukh.mp3", img: "./songs/Rukh.jpg ", artist: 'Navaan sandhu' },
+    { id: 0, name: "Rehan Deyan", src: "./songs/Rehan-Deyan.mp3",album:"Naveezy" ,img: "./songs/Rehan-deyan.jpg", artist: 'Navaan sandhu' },
+    { id: 1, name: "Majhail Anthem", src: "./songs/Majhail.mp3",album:"Majhail Anthem", img: "./songs/Majh.jpg", artist: 'Karan Randhawa' },
+    { id: 2, name: "Jhol", src: "./songs/Jhol.mp3",album:"Jhol",  img: "./songs/Jhol.jpg", artist: 'Mannu, Annural Khalid' },
+    { id: 3, name: "Rukh", src: "./songs/Rukh.mp3",album:"Rukh", img: "./songs/Rukh.jpg ", artist: 'Navaan sandhu' },
 
 ]
 let clutter = ""
@@ -52,21 +55,21 @@ account.addEventListener("click", () => {
 })
 
 
-let currentAudio = null; 
-songDiv.addEventListener('click',()=>{
+let currentAudio = null;
+songDiv.addEventListener('click', () => {
     seekupdater()
     currentAudio.play()
-    platBtn.style.display="none"
-    pauseBtn.style.display="block"
+    platBtn.style.display = "none"
+    pauseBtn.style.display = "block"
 })
 
 songDiv.addEventListener('click', (e) => {
     if (e.target.tagName === "I") {
-        
+
         let id = parseInt(e.target.getAttribute("data-id"));
         let musicSrc = music[id].src;
-        
-        
+
+
         if (currentAudio && currentAudio.src.includes(musicSrc)) {
             if (currentAudio.paused) {
                 currentAudio.play();
@@ -74,27 +77,27 @@ songDiv.addEventListener('click', (e) => {
                 currentAudio.pause();
             }
         } else {
-            
+
             if (currentAudio) {
                 currentAudio.pause();
-                
+
             }
-        
+
 
             currentAudio = new Audio(musicSrc);
             currentAudio.play();
-         
+
         }
         clearInterval(seekTime)
-        playtime=0
-        
-seekupdater()
+        playtime = 0
+
+        seekupdater()
         playbackSongs(id);
     }
 
     function aduration() {
         currentAudio.addEventListener('loadedmetadata', () => {
-            audioduration = currentAudio.duration; 
+            audioduration = currentAudio.duration;
             // console.log(audioduration);
 
             let minutes = Math.floor(currentAudio.duration / 60);
@@ -104,10 +107,10 @@ seekupdater()
         });
     }
 
-    
+
     aduration();
 
- 
+
     currentAudio.addEventListener('loadedmetadata', () => {
         // console.log(`The audio duration is available for use: ${audioduration} seconds`);
         seekupdater()
@@ -148,93 +151,127 @@ let volumeRocker = document.querySelector("#volume-rocker")
 volumeRocker.addEventListener('input', () => {
     currentAudio.volume = volumeRocker.value
     // console.log(currentAudio.volume);
-    
+
 
 })
 
 
 function seekupdater() {
-  let seek = document.querySelector("#seek");
- clearInterval(seekTime)
+    let seek = document.querySelector("#seek");
+    clearInterval(seekTime)
 
 
- seekTime = setInterval(() => {
- 
-    let time = Math.floor((currentAudio.currentTime / currentAudio.duration) * 100);
-    // console.log("time",time);
-    
-    seek.value = time;
+    seekTime = setInterval(() => {
+
+        let time = Math.floor((currentAudio.currentTime / currentAudio.duration) * 100);
+        // console.log("time",time);
+
+        seek.value = time;
 
 
-    playtime++;
-    if (playtime === 60) {
-      playtime = 0;
-      count++;
-    }
+        playtime++;
+        if (playtime === 60) {
+            playtime = 0;
+            count++;
+        }
 
 
-    if (playtime.toString().length === 2) {
-      initalTime.innerHTML = `${count}:${playtime}`;
-    } else {
-      initalTime.innerHTML = `${count}:0${playtime}`;
-    }
+        if (playtime.toString().length === 2) {
+            initalTime.innerHTML = `${count}:${playtime}`;
+        } else {
+            initalTime.innerHTML = `${count}:0${playtime}`;
+        }
 
-    // console.log("Seek Value:", seek.value);
-    // console.log("Current Playtime:", playtime, "Minutes:", count);
+        // console.log("Seek Value:", seek.value);
+        // console.log("Current Playtime:", playtime, "Minutes:", count);
 
-  }, 1000); 
+    }, 1000);
 
-  setTimeout(() => {
-    clearInterval(seekTime);
-    // console.log("Audio completed. Timer stopped.");
-  }, currentAudio.duration * 1000); 
+    setTimeout(() => {
+        clearInterval(seekTime);
+        // console.log("Audio completed. Timer stopped.");
+    }, currentAudio.duration * 1000);
 }
 
-pauseBtn.addEventListener('click',()=>{
-currentAudio.pause()
-clearInterval( seekTime)
-platBtn.style.display="block"
-pauseBtn.style.display="none"
+pauseBtn.addEventListener('click', () => {
+    currentAudio.pause()
+    clearInterval(seekTime)
+    platBtn.style.display = "block"
+    pauseBtn.style.display = "none"
 
 })
-platBtn.addEventListener('click',()=>{
+platBtn.addEventListener('click', () => {
 
-   seekupdater()
+    seekupdater()
     currentAudio.play()
-    platBtn.style.display="none"
-    pauseBtn.style.display="block"
-    
-    })
+    platBtn.style.display = "none"
+    pauseBtn.style.display = "block"
 
-    // liked songs
-    likesongs()
-    let arr=[];
-function likesongs(){
+})
 
-    leftplayback.addEventListener('click',(e)=>{
-
-        if(e.target.tagName==="I"){
+// liked songs
+likesongs()
+let arr = [];
+function likesongs() {
+    leftplayback.addEventListener('click', (e) => {
+        let clutter=''
+        
+        if (e.target.tagName === "I") {
             
-           arr.push(music[ e.target.getAttribute("data-set")])            
+            arr.push(music[e.target.getAttribute("data-set")])
         }
+        arr.forEach((e,i)=>{
+             clutter+=` <div
+                                class="liked-box h-16 pl-2    hover:bg-indigo-950 rounded-md  flex items-center justify-center">
+                                <div class="w-[40%] h-full gap-3 rounded-md  name flex items-center justify-start">
+                                    ${i+1} <img class="h-[80%] rounded-md" src="${e.img}" alt="">
+                                    <div class="info">
+                                        <p> ${e.name}</p>
+                                        <p>${e.artist}</p>
+                                    </div>
+                                </div>
+                                <div class="album w-[20%]  flex items-center  justify-start">${e.album}</div>
+                                <div class="date-added w-[25%] flex  items-center justify-start">feb-12-2025</div>
+                                <div class="time w-[15%] flex items-center justify-start">
+                                    3:40
+                                </div>
+                            </div>`
+            
+
+        })
+        likedSongsDiv.innerHTML=clutter
         console.log(arr);
     })
 }
 
-seek.addEventListener("input",(e)=>{
+seek.addEventListener("input", (e) => {
 
-//   currentAudio.currentTime+=seek.value
-console.log(currentAudio.currentTime);
-console.log(currentAudio.duration);
-console.log(seek.value);
-console.log();
-currentAudio.currentTime=((currentAudio.duration* seek.value)/100)
-
-
+    //   currentAudio.currentTime+=seek.value
+    console.log(currentAudio.currentTime);
+    console.log(currentAudio.duration);
+    console.log(seek.value);
+    console.log();
+    currentAudio.currentTime = ((currentAudio.duration * seek.value) / 100)
 
 
-  
-  seekupdater()
-  
+
+
+
+    seekupdater()
+
 })
 
+// liked songs list 
+let flagliked = 0
+leftLiked.addEventListener('click', () => {
+    if (flagliked == 0) {
+        
+        flagliked = 1
+       likedDIv.style.display="block"
+    }
+    else {
+        likedDIv.style.display="none"
+      
+        flagliked=0
+    }
+})
