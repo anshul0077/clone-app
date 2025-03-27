@@ -6,8 +6,8 @@ let songDiv = document.querySelector(".main-content")
 let endTime = document.querySelector("#end-time")
 let initalTime = document.querySelector("#inital-time")
 let leftLiked = document.querySelector(".left >.box")
-let likedSongsDiv=document.querySelector(".liked-songs-here")
-let likedDIv=document.querySelector(".inner-main-content ")
+let likedSongsDiv = document.querySelector(".liked-songs-here")
+let likedDIv = document.querySelector(".inner-main-content ")
 let audioduration = 0;
 let platBtn = document.querySelector("#play")
 let pauseBtn = document.querySelector("#pause")
@@ -15,10 +15,10 @@ let seekTime
 let playtime = 0;
 let count = 0;
 let music = [
-    { id: 0, name: "Rehan Deyan", src: "./songs/Rehan-Deyan.mp3",album:"Naveezy" ,img: "./songs/Rehan-deyan.jpg", artist: 'Navaan sandhu',du:"3:20" },
-    { id: 1, name: "Majhail Anthem", src: "./songs/Majhail.mp3",album:"Majhail Anthem", img: "./songs/Majh.jpg", artist: 'Karan Randhawa' ,du:"3:38" },
-    { id: 2, name: "Jhol", src: "./songs/Jhol.mp3",album:"Jhol",  img: "./songs/Jhol.jpg", artist: 'Mannu, Annural Khalid',du:"4:38" },
-    { id: 3, name: "Rukh", src: "./songs/Rukh.mp3",album:"Rukh", img: "./songs/Rukh.jpg ", artist: 'Navaan sandhu',du:"3:32" },
+    { id: 0, name: "Rehan Deyan", src: "./songs/Rehan-Deyan.mp3", album: "Naveezy", img: "./songs/Rehan-deyan.jpg", artist: 'Navaan sandhu', du: "3:20" },
+    { id: 1, name: "Majhail Anthem", src: "./songs/Majhail.mp3", album: "Majhail Anthem", img: "./songs/Majh.jpg", artist: 'Karan Randhawa', du: "3:38" },
+    { id: 2, name: "Jhol", src: "./songs/Jhol.mp3", album: "Jhol", img: "./songs/Jhol.jpg", artist: 'Mannu, Annural Khalid', du: "4:38" },
+    { id: 3, name: "Rukh", src: "./songs/Rukh.mp3", album: "Rukh", img: "./songs/Rukh.jpg ", artist: 'Navaan sandhu', du: "3:32" },
 
 ]
 
@@ -32,6 +32,7 @@ music.forEach(e => {
 })
 let flag = 0
 let flag2 = 0
+
 
 more.addEventListener("click", () => {
     if (flag == 0) {
@@ -64,7 +65,50 @@ songDiv.addEventListener('click', () => {
     platBtn.style.display = "none"
     pauseBtn.style.display = "block"
 })
+likedSongsDiv.addEventListener('click', (e) => {
+    if (e.target.tagName === "IMG") {
 
+
+        let id = parseInt(e.target.getAttribute("data-img"));
+        let musicSrc = music[id].src;
+
+
+        if (currentAudio && currentAudio.src.includes(musicSrc)) {
+            if (currentAudio.paused) {
+                currentAudio.play();
+            } else {
+                currentAudio.pause();
+            }
+        } else {
+
+            if (currentAudio) {
+                currentAudio.pause();
+
+            }
+
+
+            volume()
+            currentAudio = new Audio(musicSrc);
+
+
+            currentAudio.play();
+
+        }
+        clearInterval(seekTime)
+        playtime = 0
+
+        seekupdater()
+        playbackSongs(id);
+
+
+
+
+
+
+    }
+
+
+})
 songDiv.addEventListener('click', (e) => {
     if (e.target.tagName === "I") {
 
@@ -89,7 +133,7 @@ songDiv.addEventListener('click', (e) => {
             volume()
             currentAudio = new Audio(musicSrc);
 
-          
+
             currentAudio.play();
 
         }
@@ -153,13 +197,13 @@ function playbackSongs(id) {
 let volumeRocker = document.querySelector("#volume-rocker")
 volume()
 
-function volume(){
+function volume() {
 
     volumeRocker.addEventListener('input', () => {
         currentAudio.volume = volumeRocker.value
         // console.log(currentAudio.volume);
-        
-        
+
+
     })
 }
 
@@ -222,27 +266,29 @@ let counts = likesongs()
 console.log(counts);
 
 let arr = [];
-let date=new Date
-let month=date.toLocaleString('default',{month:"short"})
-let day=date.toLocaleString('default',{day:"2-digit"})
-let year=date.toLocaleString('default',{year:"numeric"})
+let date = new Date
+let month = date.toLocaleString('default', { month: "short" })
+let day = date.toLocaleString('default', { day: "2-digit" })
+let year = date.toLocaleString('default', { year: "numeric" })
 
 console.log(`${month}-${day}-${year}`);
-let songCount=0
-let songscountDiv=document.querySelector(".songs-Count")
+let songCount = 0
+let songscountDiv = document.querySelector(".songs-Count")
 function likesongs() {
     leftplayback.addEventListener('click', (e) => {
-        let clutter=''
-        
+        let clutter = ''
+
         if (e.target.tagName === "I") {
-            
+          
             arr.push(music[e.target.getAttribute("data-set")])
+              
+         
         }
-        arr.forEach((e,i)=>{
-             clutter+=` <div
+        arr.forEach((e, i) => {
+            clutter += ` <div
                                 class="liked-box h-16 pl-2    hover:bg-indigo-950 rounded-md  flex items-center justify-center">
                                 <div class="w-[40%] h-full gap-3 rounded-md  name flex items-center justify-start">
-                                    ${i+1} <img class="h-[80%] rounded-md" src="${e.img}" alt="">
+                                    <p data-like=${e.id}> ${i + 1}</p> <img data-img=${e.id} class="h-[80%] rounded-md" src="${e.img}" alt="">
                                     <div class="info">
                                         <p> ${e.name}</p>
                                         <p>${e.artist}</p>
@@ -254,14 +300,15 @@ function likesongs() {
                                     ${e.du}
                                 </div>
                             </div>`
-            
+
 
         })
-        likedSongsDiv.innerHTML=clutter
-    songscountDiv.innerHTML= `${likedSongsDiv.childElementCount} Songs`
-     
+       
+        likedSongsDiv.innerHTML = clutter
+        songscountDiv.innerHTML = `${likedSongsDiv.childElementCount} Songs`
+
     })
-    
+
 }
 
 
@@ -286,13 +333,13 @@ seek.addEventListener("input", (e) => {
 let flagliked = 0
 leftLiked.addEventListener('click', () => {
     if (flagliked == 0) {
-        
+
         flagliked = 1
-       likedDIv.style.display="block"
+        likedDIv.style.display = "block"
     }
     else {
-        likedDIv.style.display="none"
-      
-        flagliked=0
+        likedDIv.style.display = "none"
+
+        flagliked = 0
     }
 })
