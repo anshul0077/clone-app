@@ -15,12 +15,14 @@ let seekTime
 let playtime = 0;
 let count = 0;
 let music = [
-    { id: 0, name: "Rehan Deyan", src: "./songs/Rehan-Deyan.mp3",album:"Naveezy" ,img: "./songs/Rehan-deyan.jpg", artist: 'Navaan sandhu' },
-    { id: 1, name: "Majhail Anthem", src: "./songs/Majhail.mp3",album:"Majhail Anthem", img: "./songs/Majh.jpg", artist: 'Karan Randhawa' },
-    { id: 2, name: "Jhol", src: "./songs/Jhol.mp3",album:"Jhol",  img: "./songs/Jhol.jpg", artist: 'Mannu, Annural Khalid' },
-    { id: 3, name: "Rukh", src: "./songs/Rukh.mp3",album:"Rukh", img: "./songs/Rukh.jpg ", artist: 'Navaan sandhu' },
+    { id: 0, name: "Rehan Deyan", src: "./songs/Rehan-Deyan.mp3",album:"Naveezy" ,img: "./songs/Rehan-deyan.jpg", artist: 'Navaan sandhu',du:"3:20" },
+    { id: 1, name: "Majhail Anthem", src: "./songs/Majhail.mp3",album:"Majhail Anthem", img: "./songs/Majh.jpg", artist: 'Karan Randhawa' ,du:"3:38" },
+    { id: 2, name: "Jhol", src: "./songs/Jhol.mp3",album:"Jhol",  img: "./songs/Jhol.jpg", artist: 'Mannu, Annural Khalid',du:"4:38" },
+    { id: 3, name: "Rukh", src: "./songs/Rukh.mp3",album:"Rukh", img: "./songs/Rukh.jpg ", artist: 'Navaan sandhu',du:"3:32" },
 
 ]
+
+
 let clutter = ""
 music.forEach(e => {
     clutter += `<div class="box overflow-hidden  group h-12 rounded-md bg-gray-700 m-3 w-[90%] flex items-center justify-start gap-4"> <div class="left  flex items-center justify-start w-[78%] gap-4"><div class="img h-full rounded-md  w-14"> <img  class="rounded-md h-full w-[95%] " src=${e.img} alt=""></div> <p>${e.name}</p> </div>   <i data-id=${e.id} class="play-btn ri-play-mini-fill  transform transition-all mt-24 group-hover:mt-0   p-1  px-2 text-2xl  flex items-center justify-center text-black bg-green-500 rounded-full  "></i>  </div>
@@ -84,7 +86,10 @@ songDiv.addEventListener('click', (e) => {
             }
 
 
+            volume()
             currentAudio = new Audio(musicSrc);
+
+          
             currentAudio.play();
 
         }
@@ -146,14 +151,17 @@ function playbackSongs(id) {
 
 }
 let volumeRocker = document.querySelector("#volume-rocker")
+volume()
 
+function volume(){
 
-volumeRocker.addEventListener('input', () => {
-    currentAudio.volume = volumeRocker.value
-    // console.log(currentAudio.volume);
-
-
-})
+    volumeRocker.addEventListener('input', () => {
+        currentAudio.volume = volumeRocker.value
+        // console.log(currentAudio.volume);
+        
+        
+    })
+}
 
 
 function seekupdater() {
@@ -210,8 +218,18 @@ platBtn.addEventListener('click', () => {
 })
 
 // liked songs
-likesongs()
+let counts = likesongs()
+console.log(counts);
+
 let arr = [];
+let date=new Date
+let month=date.toLocaleString('default',{month:"short"})
+let day=date.toLocaleString('default',{day:"2-digit"})
+let year=date.toLocaleString('default',{year:"numeric"})
+
+console.log(`${month}-${day}-${year}`);
+let songCount=0
+let songscountDiv=document.querySelector(".songs-Count")
 function likesongs() {
     leftplayback.addEventListener('click', (e) => {
         let clutter=''
@@ -231,18 +249,21 @@ function likesongs() {
                                     </div>
                                 </div>
                                 <div class="album w-[20%]  flex items-center  justify-start">${e.album}</div>
-                                <div class="date-added w-[25%] flex  items-center justify-start">feb-12-2025</div>
+                                <div class="date-added w-[25%] flex  items-center justify-start">${month}-${day}-${year}</div>
                                 <div class="time w-[15%] flex items-center justify-start">
-                                    3:40
+                                    ${e.du}
                                 </div>
                             </div>`
             
 
         })
         likedSongsDiv.innerHTML=clutter
-        console.log(arr);
+    songscountDiv.innerHTML= `${likedSongsDiv.childElementCount} Songs`
+     
     })
+    
 }
+
 
 seek.addEventListener("input", (e) => {
 
