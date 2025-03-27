@@ -170,35 +170,35 @@ songDiv.addEventListener('click', (e) => {
 
 });
 
-
 let leftplayback = document.querySelector(".left-playback")
 function playbackSongs(id) {
     let showcase = music[id].img
     let artistName = music[id].artist
     let songname = music[id].name
     // console.log(showcase);
-
+    
     let clutter = ''
     clutter += `    <div class="img h-24 w-24 bg-red-500 rounded-md">
-               <img class="h-[100%] rounded-md w-[100%]" src=${showcase}>
-                </div>
-                <div class="content">
-                    <p class="font-semibold ">${songname}</p>
-                    <p class="text-gray-300">${artistName}</p>
-                </div>
-            <i class="ri-checkbox-circle-fill  hidden"></i>
-                <i data-set=${id} class="ri-add-circle-line transform transition-all duration-300 text-gray-300 hover:text-white  hover:scale-105 w-10 h-10  text-xl flex items-center justify-center rounded-full"></i>`
-
-
+    <img class="h-[100%] rounded-md w-[100%]" src=${showcase}>
+    </div>
+    <div class="content">
+    <p class="font-semibold ">${songname}</p>
+    <p class="text-gray-300">${artistName}</p>
+    </div>
+    <i class="ri-checkbox-circle-fill  hidden"></i>
+    <i data-set=${id} class="like-add-icon ri-add-circle-line transform transition-all duration-300 text-gray-300 hover:text-white  hover:scale-105 w-10 h-10  text-xl flex items-center justify-center rounded-full"></i>`
+    
+    
     leftplayback.innerHTML = clutter
-
-
+    
+    
 }
 let volumeRocker = document.querySelector("#volume-rocker")
 volume()
 
-function volume() {
 
+function volume() {
+    
     volumeRocker.addEventListener('input', () => {
         currentAudio.volume = volumeRocker.value
         // console.log(currentAudio.volume);
@@ -266,6 +266,35 @@ let counts = likesongs()
 console.log(counts);
 
 let arr = [];
+leftplayback.addEventListener("click",(e)=>{
+    if(e.target.tagName==="I"){
+        e.target.classList.remove("ri-add-circle-line")
+        
+        
+        e.target.classList.add("ri-checkbox-circle-line")
+e.target.style.color="lightGreen"
+removeEventListener("click")
+    }
+})
+function arrayCheck(muid){
+
+let exist=arr.some(items => items.id===muid)
+if(exist){
+    
+    console.log("yes");
+    
+}
+else{
+    console.log(
+        "no"
+    );
+    
+}
+}
+
+
+
+
 let date = new Date
 let month = date.toLocaleString('default', { month: "short" })
 let day = date.toLocaleString('default', { day: "2-digit" })
@@ -279,9 +308,10 @@ function likesongs() {
         let clutter = ''
 
         if (e.target.tagName === "I") {
+            let msuicid=parseInt(e.target.getAttribute("data-set"))
           
-            arr.push(music[e.target.getAttribute("data-set")])
-              
+            arr.push(music[msuicid])
+              arrayCheck(msuicid)
          
         }
         arr.forEach((e, i) => {
@@ -303,6 +333,7 @@ function likesongs() {
 
 
         })
+        
        
         likedSongsDiv.innerHTML = clutter
         songscountDiv.innerHTML = `${likedSongsDiv.childElementCount} Songs`
