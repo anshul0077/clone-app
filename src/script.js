@@ -302,7 +302,7 @@ let year = date.toLocaleString('default', { year: "numeric" })
 
 console.log(`${month}-${day}-${year}`);
 let songCount = 0
-let songscountDiv = document.querySelector(".songs-Count")``
+let songscountDiv = document.querySelector(".songs-Count")
 function likesongs() {
     leftplayback.addEventListener('click', (e) => {
         let clutter = ''
