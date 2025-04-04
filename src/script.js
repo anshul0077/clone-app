@@ -242,7 +242,7 @@ function seekupdater() {
     setTimeout(() => {
         clearInterval(seekTime);
         // console.log("Audio completed. Timer stopped.");
-    }, currentAudio.duration * 1000);
+    }, currentAudio.duration*1000);
 }
 
 pauseBtn.addEventListener('click', () => {
@@ -273,7 +273,6 @@ leftplayback.addEventListener("click",(e)=>{
         
         e.target.classList.add("ri-checkbox-circle-line")
 e.target.style.color="lightGreen"
-removeEventListener("click")
     }
 })
 function arrayCheck(muid){
@@ -303,15 +302,23 @@ let year = date.toLocaleString('default', { year: "numeric" })
 console.log(`${month}-${day}-${year}`);
 let songCount = 0
 let songscountDiv = document.querySelector(".songs-Count")
+
 function likesongs() {
     leftplayback.addEventListener('click', (e) => {
         let clutter = ''
 
         if (e.target.tagName === "I") {
-            let msuicid=parseInt(e.target.getAttribute("data-set"))
-          
-            arr.push(music[msuicid])
-              arrayCheck(msuicid)
+            let icon=(e.target.getAttribute("class"))
+            console.log(icon);
+            if(icon.includes("ri-add-circle-line")){
+                
+                
+                let msuicid=parseInt(e.target.getAttribute("data-set"))
+              
+                arr.push(music[msuicid])
+                  arrayCheck(msuicid)
+            }
+            
          
         }
         arr.forEach((e, i) => {
