@@ -112,9 +112,14 @@ likedSongsDiv.addEventListener('click', (e) => {
 songDiv.addEventListener('click', (e) => {
     if (e.target.tagName === "I") {
 
+
+        
+
         let id = parseInt(e.target.getAttribute("data-id"));
         let musicSrc = music[id].src;
 
+
+          
 
         if (currentAudio && currentAudio.src.includes(musicSrc)) {
             if (currentAudio.paused) {
@@ -263,7 +268,7 @@ platBtn.addEventListener('click', () => {
 
 // liked songs
 let counts = likesongs()
-console.log(counts);
+// console.log(counts);
 
 let arr = [];
 leftplayback.addEventListener("click",(e)=>{
@@ -280,13 +285,13 @@ function arrayCheck(muid){
 let exist=arr.some(items => items.id===muid)
 if(exist){
     
-    console.log("yes");
+    // console.log("yes");
     
 }
 else{
-    console.log(
-        "no"
-    );
+    // console.log(
+    //     "no"
+    // );
     
 }
 }
@@ -299,17 +304,19 @@ let month = date.toLocaleString('default', { month: "short" })
 let day = date.toLocaleString('default', { day: "2-digit" })
 let year = date.toLocaleString('default', { year: "numeric" })
 
-console.log(`${month}-${day}-${year}`);
+// console.log(`${month}-${day}-${year}`);
 let songCount = 0
 let songscountDiv = document.querySelector(".songs-Count")
-
+let icon;
 function likesongs() {
     leftplayback.addEventListener('click', (e) => {
         let clutter = ''
 
         if (e.target.tagName === "I") {
-            let icon=(e.target.getAttribute("class"))
-            console.log(icon);
+            
+            
+             icon=(e.target.getAttribute("class"))
+            // console.log(icon);
             if(icon.includes("ri-add-circle-line")){
                 
                 
@@ -353,10 +360,10 @@ function likesongs() {
 seek.addEventListener("input", (e) => {
 
     //   currentAudio.currentTime+=seek.value
-    console.log(currentAudio.currentTime);
-    console.log(currentAudio.duration);
-    console.log(seek.value);
-    console.log();
+    // console.log(currentAudio.currentTime);
+    // console.log(currentAudio.duration);
+    // console.log(seek.value);
+    // console.log();
     currentAudio.currentTime = ((currentAudio.duration * seek.value) / 100)
 
 
@@ -381,3 +388,38 @@ leftLiked.addEventListener('click', () => {
         flagliked = 0
     }
 })
+
+songDiv.addEventListener('click',e=>{
+
+    if(e.target.tagName==="I"){
+        let mid=e.target.getAttribute("data-id")
+        
+        let amid=parseInt(mid)
+console.log(amid);
+
+checking(amid)
+
+    }
+ 
+})
+
+function checking(mianid){
+
+console.log(arr);
+console.log("this is",mianid); 
+
+arr.forEach(e=>{
+
+    if(e.id==mianid){
+
+
+console.log(" this is include Yes");
+console.log(icon.getAttribute('class'))
+        
+    }
+    else{
+
+    }
+})
+
+}
